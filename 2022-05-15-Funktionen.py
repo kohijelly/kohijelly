@@ -175,7 +175,11 @@ print(ergebnis)#flasche
 def kommt_vor(wort, buchstabe):
     wortläge = len(wort)
     zähler = 0
-    for i in range(int(wortlänge-1))
+    for i in range(int(wortlänge-1)):
+        if wort[zähler] == buchstabe[0]:
+            return True
+        else:
+            zähler = zähler + 1
 ergebnis = kommt_vor("freiburg", "a")
 print(ergebnis) #flasche
 ergebnis = kommt_vor("fensterscheibe", "e")
