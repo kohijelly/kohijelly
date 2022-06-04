@@ -1,3 +1,7 @@
+from contextlib import nullcontext
+import random
+
+
 def funktion1():
     print("hallo!")
 funktion1()
@@ -11,9 +15,9 @@ def funktion3(zahl):
     print(zahl * 2)
 funktion3(5)
 
-#Gibt Positiv aus, falls zahl größer 0 ist, und Negativ, falls zahl kleiner 0 ist. bei  0 tut sie nichts.
+#Gibt Positiv aus, falls zahl groesser 0 ist, und Negativ, falls zahl kleiner 0 ist. bei  0 tut sie nichts.
 def funktion4(zahl):
-    zahl = random,randit(-10,10)
+    zahl = random.randint(-10,10)
     if zahl < 0:
         print("Negativ")
     if zahl > 0:
@@ -28,14 +32,14 @@ def funktion5(wort):
 funktion5("Auto")
 funktion5("Baum")
 
-def größere(zahl1,zahl2):
+def groessere(zahl1,zahl2):
     
     if zahl1 > zahl2 :
         print(zahl1)
     else:
         print(zahl2)
 
-def größte (zahl1,zahl2,zahl3):
+def groesste (zahl1,zahl2,zahl3):
     if zahl1 >= zahl2 and zahl1 >= zahl3:
         print(zahl1)
     elif zahl2 >= zahl1 and zahl2 >= zahl3:
@@ -73,16 +77,16 @@ def erster(wort):
 ergebnis = erster("schiff")
 print(ergebnis)
 
-def länge(wort):
+def laenge(wort):
     ergebnis = len(wort)
     return ergebnis
-ergebnis = länge("schiff")
+ergebnis = laenge("schiff")
 print(ergebnis)
 
 
 
 def letzter(wort):
-    letzte_position = länge(wort) - 1
+    letzte_position = laenge(wort) - 1
     ergebnis = wort[letzte_position]
     return ergebnis
 ergebnis = letzter("schiff")
@@ -115,20 +119,20 @@ print(ergebnis) #True
 ergebnis = erster_gleich_erster("schiff", "eisenbahn")
 
 def letzter_gleich_letzter(wort1, wort2):
-    wortlänge1 = len(wort1)
-    wortlänge2 = len(wort2)
-    if wort1[wortlänge1 - 1] == wort2[wortlänge2 - 1]:
+    wortlaenge1 = len(wort1)
+    wortlaenge2 = len(wort2)
+    if wort1[wortlaenge1 - 1] == wort2[wortlaenge2 - 1]:
         return True
     else:
         return False
-ergebnis = letzter_gleich_letzter("statue", "zähne")
+ergebnis = letzter_gleich_letzter("statue", "zaehne")
 print(ergebnis)#True
 ergebnis = letzter_gleich_letzter("wolke", "wald")
 print(ergebnis)#False
 
 def letzter_gleich_erster(wort1, wort2):
-    wortlänge1 = len (wort1)
-    if wort1[wortlänge1-1] == wort2[0]:
+    wortlaenge1 = len (wort1)
+    if wort1[wortlaenge1-1] == wort2[0]:
         return True 
     else:
         return False       
@@ -138,8 +142,8 @@ ergebnis = letzter_gleich_erster("atlantis", "abend")
 print(ergebnis)#False
 
 def erster_gleich_letzter(wort1, wort2):
-    wortlänge2 = len(wort2)
-    if wort1[0] == wort2[wortlänge-1]:
+    wortlaenge2 = len(wort2)
+    if wort1[0] == wort2[wortlaenge2-1]:
         return True 
     else:
         return False       
@@ -149,9 +153,9 @@ ergebnis = letzter_gleich_erster("kirche", "stadt")
 print(ergebnis)#False
 
 def oder(wort1, wort2):
-    wortlänge1 = len(wort1)
-    wortlänge2 = len(wort2)
-    if wort1[0] == wort2[wortlänge2-1] or wort1[wortlänge1-1] == wort2[0]:
+    wortlaenge1 = len(wort1)
+    wortlaenge2 = len(wort2)
+    if wort1[0] == wort2[wortlaenge2-1] or wort1[wortlaenge1-1] == wort2[0]:
         return True 
     else:
         return False 
@@ -169,21 +173,28 @@ def stelle_gleich_stelle(wort1, wort2, stelle):
         return False
 ergebnis = stelle_gleich_stelle("lorbeeren", "serbien", 3)
 print(ergebnis)#True
-ergebnis = stelle_gleich_stelle("ägäis", "nilpferd", 1)
+ergebnis = stelle_gleich_stelle("aegaeis", "nilpferd", 1)
 print(ergebnis)#flasche
 
 def kommt_vor(wort, buchstabe):
-    wortläge = len(wort)
-    zähler = 0
-    for i in range(int(wortlänge-1)):
-        if wort[zähler] == buchstabe[0]:
-            return True
-        else:
-            zähler = zähler + 1
+    #wortlaenge = len(wort)
+    #zaehler = 0
+    if buchstabe in wort:
+        return True
+    else:
+        return False    
+    #for i in range(int(wortlaenge-1)):
+    #    if wort[zaehler] == buchstabe[0]: 
+    #        return True
+    #    else:
+    #        zaehler = zaehler + 1
+    #return False
 ergebnis = kommt_vor("freiburg", "a")
-print(ergebnis) #flasche
+print("kommt_vor ergebnis freiburg a") 
+print(ergebnis) 
 ergebnis = kommt_vor("fensterscheibe", "e")
-
+print("kommt_vor ergebnis fensterscheibe e") 
+print(ergebnis) 
 def anzahl_buchstaben(wort, buchstaben):
     pass
 ergebnis = anzahl_buchstaben("ananas","a")
@@ -197,8 +208,22 @@ ergebnis = buchstabe_gleich("birnbaum", "barnabas")
 print(ergebnis)#3
 
 def palindrom(wort):
-    pass
+    #wortlaenge = len(wort)
+    #zaehler = 0
+    #for i in range(int(wortlaenge/2-1)):
+    #    if wort[zaehler] != wort[wortlaenge - zaehler -1]:
+    #        return False
+    #    else:
+    #        zaehler = zaehler + 1
+    #return True
+    reverse = wort[::-1]
+    if reverse.lower() == wort.lower():
+        return True
+    else:
+        return False
 ergebnis = palindrom("rentner")
+print(ergebnis)#True
+ergebnis = palindrom("Lagerregal")
 print(ergebnis)#True
 ergebnis = palindrom("lager")
 print(ergebnis)#False
