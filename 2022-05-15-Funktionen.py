@@ -177,24 +177,22 @@ ergebnis = stelle_gleich_stelle("aegaeis", "nilpferd", 1)
 print(ergebnis)#flasche
 
 def kommt_vor(wort, buchstabe):
-    #wortlaenge = len(wort)
-    #zaehler = 0
-    if buchstabe in wort:
-        return True
-    else:
-        return False    
-    #for i in range(int(wortlaenge-1)):
-    #    if wort[zaehler] == buchstabe[0]: 
-    #        return True
-    #    else:
-    #        zaehler = zaehler + 1
-    #return False
-ergebnis = kommt_vor("freiburg", "a")
-print("kommt_vor ergebnis freiburg a") 
+    wortlaenge = len(wort)
+    
+    #if buchstabe in wort:
+    #   return True
+    #else:
+    #   return False    
+    for i in range(wortlaenge):
+        if wort[i] == buchstabe: 
+            return True
+        
+    return False
+ergebnis = kommt_vor("freiburg", "g")
 print(ergebnis) 
 ergebnis = kommt_vor("fensterscheibe", "e")
-print("kommt_vor ergebnis fensterscheibe e") 
 print(ergebnis) 
+
 def anzahl_buchstaben(wort, buchstaben):
     pass
 ergebnis = anzahl_buchstaben("ananas","a")
