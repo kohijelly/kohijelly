@@ -251,34 +251,65 @@ print(ergebnis) # 0
 #Gib die erste stelle zurück an der in wort der Buchstabe steht und -1, falls er garnicht vorkommt
 def stelle(wort,buchstabe):
     wortlänge = len(wort)
-    if wort[stelle] == buchstabe:
-        return stelle
-    
+    for i in range (wortlänge):  
+        if wort[i] == buchstabe:
+            return i
+    return -1 
 
-ergebnis = stelle ( "microsoft", "r")
+ergebnis = stelle( "microsoft", "r")
 print(ergebnis) #3
-ergebnis = stelle ("python")
+ergebnis = stelle("python","z" )
 print(ergebnis) #-1
 
 # Gibt zurück, wie oft in wort der Buchstabe buchstabe vorkommt
 def anzahl_buchstabe(wort, buchstabe):
-    pass
+    
     wortlänge = len(wort)
     zähler = 0
-    for i in range:
-        if wort [zähler] == buchstabe[zähler]:
-
-
+    for i in range(wortlänge):
+        if wort [i] == buchstabe:
+            zähler = zähler + 1
+    return zähler
+    
 ergebnis = anzahl_buchstabe("ananas", "a")
 print(ergebnis) # 3
-ergebnis = kommt_vor("essen", "e")
+ergebnis = anzahl_buchstabe("essen", "e")
 print(ergebnis) # 2
 
 # Gibt zurück, wie oft in wort1 und wort2 die gleichen Buchstaben an der gleichen Stelle stehen
 def buchstaben_gleich(wort1, wort2):
-    pass
+    wortlänge = len(wort1)
+    zähler = 0
+    for i in range(wortlänge):
+        if wort1[i] == wort2[i]:
+            zähler = zähler + 1
+    return zähler 
 ergebnis = buchstaben_gleich("birnbaum", "barnabas")
 print(ergebnis) # 3
+
+def stelle_letzte(wort, buchstabe):
+    wortlänge = len(wort)
+    zähler = 0
+    for i in range(wortlänge):
+        if wort[i] == buchstabe:
+            zähler = wortlänge - zähler - 2
+            return zähler 
+    return -1
+ergebnis = stelle_letzte("eichelhäher", "e")
+print (ergebnis) #9
+ergebnis = stelle_letzte("fabrik", "e")
+print (ergebnis) #-1
+
+#Frag den Benutzer nach fünf Buchstaben und gibt das daraus zusammengesetzte Wort zurück.
+def fünf_buchstaben():
+    buchstabe1 = input("erster Buchstabe: ")
+    buchstabe2 = input("zweiter Buchstabe: ")
+    buchstabe3 = input("dritter Buchstabe: ")
+    buchstabe4 = input("vierterBuchstabe: ")
+    buchstabe5 = input("fünfter Buchstabe: ")
+    
+ergebnis = fünf_buchstaben()
+print(ergebnis)
 
 # Gibt True zurück, falls wort ein Palindrom ist, ansonsten False
 def palindrom(wort):
