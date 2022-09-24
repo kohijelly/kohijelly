@@ -79,9 +79,15 @@ while i >= 210 :
 print(list)
 
 # 0 bis -25
-
+i= 0
+while i >= -25
+    print(i)
+    i = i -1
 # -90 bis - 140
-
+i= -90
+while i >= -140
+    print(i)
+    i = i -1
 # 88 bis 44 durch 4 telbar
 
 # 0 bis 100 durch 3 und 5 teilbahr 
