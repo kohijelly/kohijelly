@@ -56,7 +56,12 @@ class TicTacToe(arcade.Window):
             return True
         return False
         
-
+    def remi(self):
+        for i in range(len(self.spielfeld)):
+            if self.spielfeld[i] != "x" and self.spielfeld[i] != "o":
+                return False
+        return not self.gewinnprüfung()
+    
     def on_mouse_press(self, x, y, button, modifiers):
        
         feld=self.koordinaten_zu_feld(x, y)
@@ -75,7 +80,12 @@ class TicTacToe(arcade.Window):
 
             spielstein.position = aufhängepunkt
             self.spielstein_liste.append(spielstein)
-        
+
+    def on_key_press(self, symbol, modifiers):
+        if symbol == arcade.key.Q:
+            arcade.exit()
+
+
     def on_draw (self):
 
         arcade.draw_lrwh_rectangle_textured(0, 0, 600, 600, arcade.load_texture("hintergrund.jpeg"))
@@ -88,8 +98,10 @@ class TicTacToe(arcade.Window):
         if self.gewinnprüfung() == True:
             arcade.draw_lrtb_rectangle_filled(0,600, 600,0, arcade.color.WINE_DREGS)
             arcade.draw_text (("pickelRick" if self.spieler == "o" else "Morty") + " hat gewonnen!", 300, 300, arcade.color.WHITE, 20, font_name="Kenney Blocks", anchor_x="center")
+        if  self.remi() == True:
+            arcade.draw_lrtb_rectangle_filled(0,600, 600,0, arcade.color.WINE_DREGS)
+            arcade.draw_text ("Remi!", 300, 300, arcade.color.WHITE, 24, font_name="Kenney Blocks", anchor_x="center")
         
-
 ttt = TicTacToe(600, 600,"Tic Tac Toe")
 arcade.run()
 
