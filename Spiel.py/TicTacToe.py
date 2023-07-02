@@ -44,10 +44,17 @@ class TicTacToe(arcade.Window):
             return True 
         if self.spielfeld[8] == self.spielfeld[7] == self.spielfeld[6]:
             return True
+        if self.spielfeld[0] == self.spielfeld[3] == self.spielfeld[6]:
+            return True
+        if self.spielfeld[1] == self.spielfeld[4] == self.spielfeld[5]:
+            return True
+        if self.spielfeld[2] == self.spielfeld[5] == self.spielfeld[8]:
+            return True 
         if self.spielfeld[2] == self.spielfeld[4] == self.spielfeld[6]:
             return True 
         if self.spielfeld[0] == self.spielfeld[4] == self.spielfeld[8]:
             return True
+        return False
         
 
     def on_mouse_press(self, x, y, button, modifiers):
@@ -57,32 +64,46 @@ class TicTacToe(arcade.Window):
         if self.spielfeld[feld-1] == feld: 
             self.spielfeld[feld-1] = self.spieler
 
-        aufhängepunkt = self.feld_zu_mittelpunkt(feld)
+            aufhängepunkt = self.feld_zu_mittelpunkt(feld)
 
-        if self.spieler == "x":
-            spielstein = arcade.Sprite ("picklrricks.jpeg")
-            self.spieler = "o"
-        else:
-            spielstein = arcade.Sprite ("morty.png")
-            self.spieler = "x"
+            if self.spieler == "x":
+                spielstein = arcade.Sprite ("picklrricks.jpeg")
+                self.spieler = "o"
+            else:
+                spielstein = arcade.Sprite ("morty.png")
+                self.spieler = "x"
 
-        spielstein.position = aufhängepunkt
-        self.spielstein_liste.append(spielstein)
+            spielstein.position = aufhängepunkt
+            self.spielstein_liste.append(spielstein)
         
     def on_draw (self):
 
         arcade.draw_lrwh_rectangle_textured(0, 0, 600, 600, arcade.load_texture("hintergrund.jpeg"))
 
         eckpunkte_liste=((20,200), (580, 200), (20,400), (580, 400), (200,20), (200,580), (400, 20), (400, 580))
-        arcade.draw_lines(eckpunkte_liste,arcade.color.UFO_GREEN, 17 )
+        arcade.draw_lines(eckpunkte_liste,arcade.color.DARK_BLUE, 17 )
 
         self.spielstein_liste.draw()
 
         if self.gewinnprüfung() == True:
             arcade.draw_lrtb_rectangle_filled(0,600, 600,0, arcade.color.WINE_DREGS)
-            arcade.draw_text (("pickelRick" if self.spieler == "o" else "Morty") + "hat gewonnen!", 300, 300, arcade.color.WHITE, 20, font_name="Kenney Blocks", anchor_x="center")
+            arcade.draw_text (("pickelRick" if self.spieler == "o" else "Morty") + " hat gewonnen!", 300, 300, arcade.color.WHITE, 20, font_name="Kenney Blocks", anchor_x="center")
         
-
 
 ttt = TicTacToe(600, 600,"Tic Tac Toe")
 arcade.run()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
