@@ -115,7 +115,11 @@ class TicTacToe(arcade.Window):
             arcade.draw_text ("Remi!", 300, 300, arcade.color.WHITE, 24, font_name="Kenney Blocks", anchor_x="center")
             arcade.draw_text ("R : Neustart", 300, 230,arcade.color.WHITE, 18, font_name="Kenney Blocks", anchor_x="center")
             arcade.draw_text ("Q : Abbrechen", 300, 170, arcade.color.WHITE, 18, font_name="Kenney Blocks",anchor_x="center")
-        
+
+    audio = arcade.load_sound('Cats-Cradle.wav',False)
+    arcade.play_sound(audio,1.0,-1,False)
+
+
 ttt = TicTacToe(600, 600,"Tic Tac Toe")
 arcade.run()
 
